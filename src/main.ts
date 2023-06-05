@@ -32,7 +32,9 @@ async function updateExistingAddon(uuid: string, xpiPath: string, version: strin
     headers: {
       ...body.getHeaders(),
       Authorization: `JWT ${token}`
-    }
+    },
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
   });
   core.debug(`Response: ${JSON.stringify(response.data)}`);
 }
@@ -50,7 +52,9 @@ async function createNewAddon(xpiPath: string, version: string, token: string) {
     headers: {
       ...body.getHeaders(),
       Authorization: `JWT ${token}`
-    }
+    },
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
   });
   core.debug(`Response: ${JSON.stringify(response.data)}`);
 }
